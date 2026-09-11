@@ -253,7 +253,7 @@ export function useReflexGame(setup: GameSetup) {
 
     scoreRef.current += 1;
     releasePlayerBlockImmediately();
-    showMessage("BLOQUEADO");
+  
 
     if (setup.mode === "solo") {
       speedRef.current += GAME_CONFIG.soloSpeedIncrease;
