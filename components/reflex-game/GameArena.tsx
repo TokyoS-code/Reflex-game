@@ -82,7 +82,7 @@ export default function GameArena({ setup, onBackToMenu }: GameArenaProps) {
 
       {message && (
         <div
-          className={`${styles.message} ${message === "BLOQUEADO" ? styles.success : styles.fail}`}
+          className={`${styles.message}`}
         >
           {message}
         </div>
