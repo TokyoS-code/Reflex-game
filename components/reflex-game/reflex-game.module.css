@@ -1,0 +1,666 @@
+.game,
+.menuScreen {
+  position: relative;
+  width: 100dvw;
+  height: 100dvh;
+  min-height: 420px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 22%, rgba(0, 255, 102, 0.04), transparent 30%),
+    #050505;
+  color: #fff;
+  user-select: none;
+}
+
+.game {
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.menuScreen {
+  display: grid;
+  place-items: center;
+  padding:
+    max(24px, env(safe-area-inset-top))
+    max(18px, env(safe-area-inset-right))
+    max(24px, env(safe-area-inset-bottom))
+    max(18px, env(safe-area-inset-left));
+}
+
+.menuGlow {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  width: min(70vw, 760px);
+  aspect-ratio: 1;
+  translate: -50% 0;
+  border-radius: 999px;
+  background: rgba(0, 255, 102, 0.055);
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.menuPanel {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 920px);
+}
+
+.menuHeader {
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.eyebrow {
+  color: #00ff66;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.menuHeader h1 {
+  margin: 10px 0 8px;
+  font-size: clamp(34px, 6vw, 62px);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+}
+
+.menuHeader p {
+  max-width: 590px;
+  margin: 0 auto;
+  color: #888;
+  font-size: clamp(14px, 2vw, 16px);
+  line-height: 1.55;
+}
+
+.modeGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.modeCard {
+  min-height: 290px;
+  padding: 24px;
+  border: 1px solid #1d1d1d;
+  border-radius: 20px;
+  background: rgba(13, 13, 13, 0.92);
+  color: #fff;
+  text-align: left;
+  transition:
+    transform 150ms ease,
+    border-color 150ms ease,
+    background 150ms ease;
+}
+
+button.modeCard {
+  cursor: pointer;
+}
+
+button.modeCard:hover,
+.multiplayerCard:hover {
+  border-color: #343434;
+  background: #101010;
+}
+
+button.modeCard:hover {
+  transform: translateY(-2px);
+}
+
+.modeCard > strong {
+  display: block;
+  margin-top: 20px;
+  font-size: clamp(24px, 4vw, 34px);
+  letter-spacing: -0.035em;
+}
+
+.modeCard > p {
+  margin: 10px 0 0;
+  color: #858585;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.modeTag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 27px;
+  padding: 0 10px;
+  border: 1px solid #282828;
+  border-radius: 999px;
+  color: #bdbdbd;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.playLabel {
+  display: inline-block;
+  margin-top: 38px;
+  color: #00ff66;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+
+.multiplayerCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.botSelector {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 22px;
+}
+
+.botSelector > span {
+  color: #777;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.botSelector > div {
+  display: flex;
+  gap: 7px;
+}
+
+.botSelector button {
+  width: 36px;
+  height: 32px;
+  border: 1px solid #292929;
+  border-radius: 9px;
+  background: #111;
+  color: #777;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.botSelector button.botCountActive {
+  border-color: #00ff66;
+  color: #00ff66;
+  background: rgba(0, 255, 102, 0.06);
+}
+
+.primaryPlayButton {
+  width: 100%;
+  min-height: 46px;
+  margin-top: 14px;
+  border: 0;
+  border-radius: 12px;
+  background: #f3f3f3;
+  color: #050505;
+  font-size: 12px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.menuFooter {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 20px;
+  color: #4e4e4e;
+  font-size: 11px;
+}
+
+.hud {
+  position: absolute;
+  z-index: 20;
+  top: max(20px, env(safe-area-inset-top));
+  left: max(20px, env(safe-area-inset-left));
+  display: flex;
+  gap: clamp(18px, 4vw, 34px);
+  pointer-events: none;
+}
+
+.stat {
+  display: grid;
+  gap: 4px;
+  color: #777;
+  font-size: clamp(10px, 1.4vw, 13px);
+  letter-spacing: 0.05em;
+}
+
+.stat strong {
+  color: #fff;
+  font-size: clamp(17px, 2vw, 23px);
+  letter-spacing: normal;
+}
+
+.menuButton {
+  position: absolute;
+  z-index: 25;
+  top: max(20px, env(safe-area-inset-top));
+  right: max(20px, env(safe-area-inset-right));
+  min-width: 66px;
+  min-height: 34px;
+  border: 1px solid #252525;
+  border-radius: 9px;
+  background: rgba(10, 10, 10, 0.8);
+  color: #777;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+.ball {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: clamp(30px, 5vw, 40px);
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background: #00ff66;
+  box-shadow:
+    0 0 12px #00ff66,
+    0 0 32px rgba(0, 255, 102, 0.65);
+  will-change: transform;
+  pointer-events: none;
+}
+
+.player,
+.shield {
+  position: absolute;
+  left: 50%;
+  top: 80%;
+  translate: -50% -50%;
+  border-radius: 999px;
+}
+
+.player,
+.bot {
+  display: grid;
+  place-items: center;
+  border: 3px solid;
+  background: #151515;
+}
+
+.player {
+  z-index: 6;
+  width: clamp(64px, 10vw, 78px);
+  aspect-ratio: 1;
+  border-color: #fff;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.18);
+  transition:
+    border-color 80ms ease,
+    box-shadow 80ms ease,
+    scale 80ms ease;
+}
+
+.playerCore,
+.botCore {
+  width: 18%;
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background: currentColor;
+  opacity: 0.8;
+}
+
+.playerBlocking {
+  scale: 1.08;
+  border-color: #00aaff;
+  color: #00aaff;
+  box-shadow:
+    0 0 12px #00aaff,
+    0 0 34px rgba(0, 170, 255, 0.65);
+}
+
+.playerTargeted {
+  border-color: #00ff66;
+  color: #00ff66;
+
+  box-shadow:
+    0 0 18px rgba(255, 255, 255, 0.24),
+    0 0 0 7px rgba(255, 255, 255, 0.025);
+}
+
+.shield {
+  z-index: 5;
+  width: clamp(100px, 16vw, 120px);
+  aspect-ratio: 1;
+  border: 3px solid transparent;
+  pointer-events: none;
+  transition:
+    border-color 80ms ease,
+    box-shadow 80ms ease;
+}
+
+.shieldActive {
+  border-color: #00aaff;
+  box-shadow:
+    0 0 22px rgba(0, 170, 255, 0.55),
+    inset 0 0 20px rgba(0, 170, 255, 0.12);
+}
+
+.botAnchor {
+  position: absolute;
+  z-index: 4;
+  width: 0;
+  height: 0;
+}
+
+.bot,
+.botShield {
+  position: absolute;
+  top: 0;
+  left: 0;
+  translate: -50% -50%;
+  border-radius: 999px;
+}
+
+.bot {
+  z-index: 2;
+  width: clamp(46px, 6.5vw, 62px);
+  aspect-ratio: 1;
+  border-color: #5d5d5d;
+  color: #5d5d5d;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+  transition:
+    border-color 90ms ease,
+    box-shadow 90ms ease,
+    scale 90ms ease;
+}
+
+.botTargeted {
+  border-color: #00ff66;
+  color: #00ff66;
+  box-shadow:
+    0 0 18px rgba(255, 255, 255, 0.13),
+    0 0 0 6px rgba(255, 255, 255, 0.02);
+}
+
+.botBlocking {
+  scale: 1.09;
+  border-color: #ffb020;
+  color: #ffb020;
+  box-shadow:
+    0 0 12px rgba(255, 176, 32, 0.8),
+    0 0 30px rgba(255, 176, 32, 0.36);
+}
+
+.botShield {
+  z-index: 1;
+  width: clamp(72px, 10vw, 90px);
+  aspect-ratio: 1;
+  border: 2px solid transparent;
+  pointer-events: none;
+  transition:
+    border-color 90ms ease,
+    box-shadow 90ms ease;
+}
+
+.botShieldActive {
+  border-color: #ffb020;
+  box-shadow: 0 0 22px rgba(255, 176, 32, 0.38);
+}
+
+.blockBarTrack {
+  position: absolute;
+  z-index: 7;
+  left: 50%;
+  top: calc(80% + 62px);
+  width: min(160px, 42vw);
+  height: 5px;
+  translate: -50% 0;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #202020;
+}
+
+.blockBar {
+  width: 100%;
+  height: 100%;
+  transform-origin: left center;
+  background: #00aaff;
+  will-change: transform;
+}
+
+.message {
+  position: absolute;
+  z-index: 30;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  font-size: clamp(24px, 5vw, 38px);
+  font-weight: 800;
+  pointer-events: none;
+}
+
+.success {
+  color: #00ff66;
+}
+
+.fail {
+  color: #ff3b3b;
+}
+
+.instructions {
+  position: absolute;
+  z-index: 10;
+  left: 50%;
+  bottom: max(24px, env(safe-area-inset-bottom));
+  translate: -50% 0;
+  display: grid;
+  gap: 5px;
+  width: min(90vw, 520px);
+  color: #666;
+  font-size: 13px;
+  text-align: center;
+  pointer-events: none;
+}
+
+.instructions small {
+  font-size: 11px;
+}
+
+.mobileHint,
+.mobileBlockButton {
+  display: none;
+}
+
+.overlay {
+  position: absolute;
+  z-index: 100;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.86);
+  cursor: default;
+}
+
+.gameOverCard {
+  width: min(100%, 430px);
+  text-align: center;
+}
+
+.gameOverCard h1 {
+  margin: 10px 0 18px;
+  font-size: clamp(30px, 7vw, 48px);
+  line-height: 1;
+}
+
+.gameOverCard p {
+  margin: 8px 0;
+  color: #aaa;
+}
+
+.gameOverActions {
+  display: grid;
+  gap: 9px;
+  margin-top: 24px;
+}
+
+.gameOverCard button,
+.mobileBlockButton {
+  border: 0;
+  border-radius: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.gameOverCard button {
+  min-height: 48px;
+  padding: 0 24px;
+  background: #fff;
+  color: #000;
+}
+
+.gameOverCard button.secondaryButton {
+  border: 1px solid #282828;
+  background: #111;
+  color: #888;
+}
+
+@media (max-width: 700px) {
+  .menuScreen {
+    overflow-y: auto;
+    place-items: start center;
+  }
+
+  .menuPanel {
+    margin: auto 0;
+  }
+
+  .modeGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .modeCard {
+    min-height: 250px;
+    padding: 20px;
+  }
+
+  .playLabel {
+    margin-top: 28px;
+  }
+
+  .menuFooter {
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .game {
+    cursor: default;
+  }
+
+  .hud {
+    top: max(12px, env(safe-area-inset-top));
+    left: 12px;
+    right: 84px;
+    gap: 9px;
+    justify-content: space-between;
+  }
+
+  .stat {
+    min-width: 0;
+    text-align: center;
+  }
+
+  .optionalStat {
+    display: none;
+  }
+
+  .menuButton {
+    top: max(12px, env(safe-area-inset-top));
+    right: 12px;
+  }
+
+  .player,
+  .shield {
+    top: 77%;
+  }
+
+  .blockBarTrack {
+    top: calc(77% + 56px);
+  }
+
+  .bot {
+    width: clamp(42px, 12vw, 56px);
+  }
+
+  .botShield {
+    width: clamp(66px, 17vw, 82px);
+  }
+
+  .desktopHint {
+    display: none;
+  }
+
+  .mobileHint {
+    display: inline;
+  }
+
+  .instructions {
+    bottom: calc(max(16px, env(safe-area-inset-bottom)) + 72px);
+  }
+
+  .mobileBlockButton {
+    position: absolute;
+    z-index: 25;
+    right: max(16px, env(safe-area-inset-right));
+    bottom: max(16px, env(safe-area-inset-bottom));
+    display: block;
+    min-width: 132px;
+    min-height: 54px;
+    padding: 0 20px;
+    background: #f2f2f2;
+    color: #050505;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.28);
+    touch-action: manipulation;
+  }
+
+  .mobileBlockButton:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+}
+
+@media (max-width: 420px) {
+  .hud {
+    right: 76px;
+  }
+
+  .stat strong {
+    font-size: 15px;
+  }
+
+  .stat span {
+    font-size: 8px;
+  }
+
+  .ball {
+    width: 30px;
+  }
+}
+
+@media (max-height: 560px) and (orientation: landscape) {
+  .player,
+  .shield {
+    top: 76%;
+  }
+
+  .blockBarTrack {
+    top: calc(76% + 48px);
+  }
+
+  .instructions {
+    display: none;
+  }
+
+  .bot {
+    width: 44px;
+  }
+
+  .botShield {
+    width: 64px;
+  }
+}
